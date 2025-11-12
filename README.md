@@ -24,7 +24,7 @@ A comprehensive Retrieval-Augmented Generation (RAG) system for university data 
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Python 3.8+
+- Python 3.10+
 - Hugging Face API Token
 
 ### Installation
@@ -72,8 +72,7 @@ Two comprehensive test suites:
 ├── experiments/             # Test suites for RAG validation
 │   ├── experiment_1_input_guardrails.py
 │   ├── experiment_2_output_guardrails.py
-│   ├── experiment_3_hyperparameters.py
-│   └── experiment_4_context_window.py
+
 ├── database/               # SQLite university database
 ├── rag/                   # Vector store and retrieval
 ├── rails/                 # Input/output guardrails
