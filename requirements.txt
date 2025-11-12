@@ -1,0 +1,12 @@
+streamlit==1.37.0
+python-dotenv==1.0.1
+transformers
+scikit-learn
+Faker==15.3.4
+sentence-transformers==5.1.0
+numpy==1.26.4
+huggingface-hub==0.34.4
+chromadb==1.0.21
+langdetect
+nltk
+plotly

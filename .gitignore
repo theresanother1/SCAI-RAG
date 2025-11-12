@@ -1,0 +1,25 @@
+# Environment
+.env
+venv/
+env/
+
+notes.txt
+# Python
+__pycache__/
+*.py[cod]
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Generated files
+database/university.db
+rag/vector_store/
+experiments/rag/vector_store/chroma.sqlite3
+
+# Secrets
+secrets_local.py

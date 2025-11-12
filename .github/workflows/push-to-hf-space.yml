@@ -1,0 +1,38 @@
+name: Push to Hugging Face Space
+
+on:
+  push:
+    branches: [ master, feature/svnr-validation ]   # change if you use another default branch
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # keep history; helpful for subtree/sparse etc.
+
+      - name: Set up Git LFS (if you track large files)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y git-lfs
+          git lfs install
+
+      - name: Push to Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HF_SPACE: pxdelta/RAG   # or use ${{ secrets.HF_SPACE }}
+        run: |
+          # Configure git identity for the CI push
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Add the Space as an authenticated remote.
+          # Username can be anything (often 'oauth2' or your HF username); token goes in the password slot.
+          git remote add hf "https://oauth2:${HF_TOKEN}@huggingface.co/spaces/${HF_SPACE}"
+
+          # Push the current GitHub branch (e.g., main) to the Space's main branch
+          git push hf HEAD:main --force
